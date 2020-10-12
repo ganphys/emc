@@ -530,8 +530,12 @@ if __name__ == "__main__":
         kpoints_fh.write("%d\n" % len(st))
         kpoints_fh.write("Reciprocal\n")
         #
-        for i, kpt in enumerate(kpoints):
-            kpoints_fh.write( '%15.10f %15.10f %15.10f 0.01\n' % (kpt[0], kpt[1], kpt[2]) )
+        if prg.upper() == 'P':
+            for i, kpt in enumerate(kpoints):
+                kpoints_fh.write( '%15.10f %15.10f %15.10f \n' % (kpt[0], kpt[1], kpt[2]) )
+        else:
+            for i, kpt in enumerate(kpoints):
+                kpoints_fh.write( '%15.10f %15.10f %15.10f 0.01\n' % (kpt[0], kpt[1], kpt[2]) )
         #
         kpoints_fh.close()
         print('KPOINTS file has been generated in the current directory...\n')
